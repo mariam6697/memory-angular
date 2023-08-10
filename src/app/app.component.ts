@@ -1,10 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IImageResponse } from './models/response.model';
+import { ImagesService } from './services/images.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'modyo-memory';
+
+  constructor(private readonly imagesService: ImagesService) {}
+
+  ngOnInit() {
+    this.getImages();
+  }
+
+  getImages() {
+    this.imagesService.getImages().subscribe({
+      next: async (res) => {
+        this.handleImages(res);
+      },
+      error: (error) => this.handleError(error),
+    });
+  }
+
+  handleImages(imagesResponse: IImageResponse) {
+    console.log('Images:', imagesResponse);
+  }
+
+  handleError(error: any) {
+    // Handle error
+    console.log('Error:', error);
+  }
 }
