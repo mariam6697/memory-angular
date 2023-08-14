@@ -1,5 +1,9 @@
 <div class="container mx-auto">
-  <div class="grid grid-rows-4 grid-flow-col gap-4">
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <div class="grid">
+    <h1 class="text-3xl font-bold">Memoria</h1>
   </div>
+  <app-game-board
+    [imagesList]="imagesList"
+    [showLoading]="loadingImages"
+  ></app-game-board>
 </div>
