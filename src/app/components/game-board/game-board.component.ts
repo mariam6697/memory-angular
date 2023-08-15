@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { IGameCard } from 'src/app/models/game-card.model';
 import { IImageData } from 'src/app/models/images.model';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-game-board',
@@ -16,6 +17,7 @@ import { IImageData } from 'src/app/models/images.model';
 export class GameBoardComponent implements OnInit, OnChanges {
   @Input() imagesList: IImageData[] = [];
   @Input() showLoading: boolean = true;
+  @Input() username: string = '';
   public cardsList: IGameCard[] = [];
   public forceHideCards: boolean = false;
   public tempAnimals: string[] = [];
@@ -23,6 +25,8 @@ export class GameBoardComponent implements OnInit, OnChanges {
   public blockGame: boolean = false;
   public errorCounter: number = 0;
   public successCounter: number = 0;
+
+  constructor(public readonly toastService: ToastService) {}
 
   ngOnInit(): void {
     this.createCards(this.imagesList);
@@ -83,11 +87,19 @@ export class GameBoardComponent implements OnInit, OnChanges {
         this.savedAnimals.push(this.tempAnimals[1]);
         this.tempAnimals = [];
         this.successCounter++;
+        this.toastService.show(`¡Felicidades, ${this.username}! Es correcto`, {
+          classname: 'bg-success text-light',
+          delay: 3000,
+        });
       } else {
         this.blockGame = true;
         this.forceHideCards = false;
         this.tempAnimals = [];
         this.errorCounter++;
+        this.toastService.show('Oh no, te has equivocado :(', {
+          classname: 'bg-danger text-light',
+          delay: 3000,
+        });
 
         // Timeout and flip back
         setTimeout(() => {

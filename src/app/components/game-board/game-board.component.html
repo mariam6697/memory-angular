@@ -1,10 +1,10 @@
-<div class="max-w-sm rounded overflow-hidden shadow-lg">
+<div class="rounded overflow-hidden flex justify-center">
   <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2 text-green-700">
-      Éxito: {{ successCounter }}
+    <div class="font-bold text-xl mb-2 text-green-700 text-center">
+      Aciertos: {{ successCounter }}
     </div>
-    <div class="font-bold text-xl mb-2 text-red-600">
-      Error: {{ errorCounter }}
+    <div class="font-bold text-xl mb-2 text-red-600 text-center">
+      Errores: {{ errorCounter }}
     </div>
   </div>
 </div>
@@ -17,3 +17,4 @@
     (newFlipEvent)="getFlipCard($event)"
   ></app-image-card>
 </div>
+<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
