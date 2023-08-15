@@ -16,7 +16,10 @@ import { IImageData } from 'src/app/models/images.model';
 export class GameBoardComponent implements OnInit, OnChanges {
   @Input() imagesList: IImageData[] = [];
   @Input() showLoading: boolean = true;
-  cardsList: IGameCard[] = [];
+  public cardsList: IGameCard[] = [];
+  public forceHideCards: boolean = false;
+  public tempAnimals: string[] = [];
+  public savedAnimals: string[] = [];
 
   ngOnInit(): void {
     this.createCards(this.imagesList);
@@ -62,4 +65,31 @@ export class GameBoardComponent implements OnInit, OnChanges {
 
     this.cardsList = auxCards;
   };
+
+  getFlipCard = (animal: string): void => {
+    this.tempAnimals.push(animal);
+    this.checkCardMatch();
+  };
+
+  checkCardMatch(): void {
+    if (this.tempAnimals.length == 2) {
+      if (this.tempAnimals[0] === this.tempAnimals[1]) {
+        // It's a match!
+        this.savedAnimals.push(this.tempAnimals[1]);
+        this.tempAnimals = [];
+      } else {
+        this.forceHideCards = false;
+        this.tempAnimals = [];
+
+        // Timeout and flip back
+        setTimeout(() => {
+          this.forceHideCards = true;
+        }, 2000);
+      }
+    }
+  }
+
+  isAnimalSaved(animal: string): boolean {
+    return this.savedAnimals.includes(animal);
+  }
 }

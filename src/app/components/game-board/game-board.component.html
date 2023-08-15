@@ -3,5 +3,7 @@
   <app-image-card
     *ngFor="let item of cardsList"
     [gameCardInfo]="item"
+    [hideCard]="forceHideCards && !isAnimalSaved(item.animal)"
+    (newFlipEvent)="getFlipCard($event)"
   ></app-image-card>
 </div>
