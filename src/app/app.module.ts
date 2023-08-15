@@ -5,10 +5,11 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageCardComponent } from './components/image-card/image-card.component';
 import { GameBoardComponent } from './components/game-board/game-board.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, ImageCardComponent, GameBoardComponent],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [BrowserModule, HttpClientModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
