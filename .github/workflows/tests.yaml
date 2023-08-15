@@ -16,12 +16,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0 
-          
+          fetch-depth: 0
+
       - uses: actions/setup-node@v3
-          with:
-            node-version: 18.17.1
-      
+        with:
+          node-version: 18.17.1
+
       - name: Installing dependencies
         run: npm install
 
