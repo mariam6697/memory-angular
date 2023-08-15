@@ -10,6 +10,7 @@ import { ToastsComponent } from './components/toasts/toasts.component';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { UsernameModalComponent } from './components/modal/username-modal.component';
 import { FormsModule } from '@angular/forms';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     GameBoardComponent,
     ToastsComponent,
     UsernameModalComponent,
+    LoadingSpinnerComponent,
   ],
   imports: [
     BrowserModule,

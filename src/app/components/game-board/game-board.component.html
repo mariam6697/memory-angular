@@ -1,20 +1,39 @@
-<div class="rounded overflow-hidden flex justify-center">
-  <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2 text-green-700 text-center">
-      Aciertos: {{ successCounter }}
-    </div>
-    <div class="font-bold text-xl mb-2 text-red-600 text-center">
-      Errores: {{ errorCounter }}
+<div *ngIf="!showLoading; else loadSpinner">
+  <div
+    *ngIf="gameFinished"
+    class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4"
+    role="alert"
+  >
+    <p class="font-bold">¡Felicidades, {{ username }}!</p>
+    <p>
+      Tras {{ errorCounter + successCounter }} intentos fallidos, lograste
+      completar {{ successCounter }} parejas de imágenes y finalizar el juego.
+    </p>
+
+    <p>¡Recarga la página para jugar otra partida!</p>
+  </div>
+  <div class="rounded overflow-hidden flex justify-center">
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2 text-green-700 text-center">
+        Aciertos: {{ successCounter }}
+      </div>
+      <div class="font-bold text-xl mb-2 text-red-600 text-center">
+        Errores: {{ errorCounter }}
+      </div>
     </div>
   </div>
+  <div class="game-board">
+    <app-image-card
+      *ngFor="let item of cardsList"
+      [gameCardInfo]="item"
+      [hideCard]="forceHideCards && !isAnimalSaved(item.animal)"
+      [blockFlipCard]="blockGame"
+      (newFlipEvent)="getFlipCard($event)"
+    ></app-image-card>
+  </div>
+  <app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
 </div>
-<div class="game-board">
-  <app-image-card
-    *ngFor="let item of cardsList"
-    [gameCardInfo]="item"
-    [hideCard]="forceHideCards && !isAnimalSaved(item.animal)"
-    [blockFlipCard]="blockGame"
-    (newFlipEvent)="getFlipCard($event)"
-  ></app-image-card>
-</div>
-<app-toasts aria-live="polite" aria-atomic="true"></app-toasts>
+
+<ng-template #loadSpinner>
+  <app-loading-spinner></app-loading-spinner
+></ng-template>

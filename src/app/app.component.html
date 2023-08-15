@@ -3,8 +3,21 @@
     <h1 class="text-3xl font-bold text-center">¡Memoria!</h1>
   </div>
   <app-game-board
+    *ngIf="!intermittenceError; else errorMessage"
     [imagesList]="imagesList"
     [showLoading]="loadingImages"
     [username]="username"
   ></app-game-board>
+  <ng-template #errorMessage>
+    <div
+      class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4"
+      role="alert"
+    >
+      <p class="font-bold">Ocurrió un error :(</p>
+      <p>
+        No pudimos cargar la información necesaria para el juego. Intenta más
+        tarde.
+      </p>
+    </div>
+  </ng-template>
 </div>

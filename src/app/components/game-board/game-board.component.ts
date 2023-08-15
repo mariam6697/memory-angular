@@ -25,6 +25,7 @@ export class GameBoardComponent implements OnInit, OnChanges {
   public blockGame: boolean = false;
   public errorCounter: number = 0;
   public successCounter: number = 0;
+  public gameFinished: boolean = false;
 
   constructor(public readonly toastService: ToastService) {}
 
@@ -91,6 +92,9 @@ export class GameBoardComponent implements OnInit, OnChanges {
           classname: 'bg-success text-light',
           delay: 3000,
         });
+
+        // Finish game
+        this.gameFinished = this.imagesList.length === this.savedAnimals.length;
       } else {
         this.blockGame = true;
         this.forceHideCards = false;
