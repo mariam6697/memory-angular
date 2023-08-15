@@ -20,6 +20,9 @@ export class GameBoardComponent implements OnInit, OnChanges {
   public forceHideCards: boolean = false;
   public tempAnimals: string[] = [];
   public savedAnimals: string[] = [];
+  public blockGame: boolean = false;
+  public errorCounter: number = 0;
+  public successCounter: number = 0;
 
   ngOnInit(): void {
     this.createCards(this.imagesList);
@@ -44,7 +47,9 @@ export class GameBoardComponent implements OnInit, OnChanges {
         imageUrl: selectedImage.fields.image.url,
         id: index,
         animal: selectedImage.meta.name,
-        altText: selectedImage.fields.image.alt_text,
+        altText:
+          selectedImage.fields.image.alt_text ||
+          `${selectedImage.fields.image.title} image`,
       });
     }
 
@@ -77,12 +82,16 @@ export class GameBoardComponent implements OnInit, OnChanges {
         // It's a match!
         this.savedAnimals.push(this.tempAnimals[1]);
         this.tempAnimals = [];
+        this.successCounter++;
       } else {
+        this.blockGame = true;
         this.forceHideCards = false;
         this.tempAnimals = [];
+        this.errorCounter++;
 
         // Timeout and flip back
         setTimeout(() => {
+          this.blockGame = false;
           this.forceHideCards = true;
         }, 2000);
       }

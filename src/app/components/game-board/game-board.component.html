@@ -1,9 +1,19 @@
-<p>game-board works!</p>
+<div class="max-w-sm rounded overflow-hidden shadow-lg">
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2 text-green-700">
+      Éxito: {{ successCounter }}
+    </div>
+    <div class="font-bold text-xl mb-2 text-red-600">
+      Error: {{ errorCounter }}
+    </div>
+  </div>
+</div>
 <div class="game-board">
   <app-image-card
     *ngFor="let item of cardsList"
     [gameCardInfo]="item"
     [hideCard]="forceHideCards && !isAnimalSaved(item.animal)"
+    [blockFlipCard]="blockGame"
     (newFlipEvent)="getFlipCard($event)"
   ></app-image-card>
 </div>

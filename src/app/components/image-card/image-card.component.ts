@@ -19,6 +19,7 @@ import { IGameCard } from 'src/app/models/game-card.model';
 export class ImageCardComponent implements OnInit, OnChanges {
   @Input() gameCardInfo: IGameCard = {} as IGameCard;
   @Input() hideCard: boolean;
+  @Input() blockFlipCard: boolean = false;
   @Output() newFlipEvent = new EventEmitter<string>();
   public showImage: boolean;
 
@@ -38,8 +39,10 @@ export class ImageCardComponent implements OnInit, OnChanges {
   }
 
   clickCard(): void {
-    this.showImage = !this.showImage;
-    this.newFlipEvent.emit(this.gameCardInfo.animal);
+    if (!this.blockFlipCard) {
+      this.showImage = !this.showImage;
+      this.newFlipEvent.emit(this.gameCardInfo.animal);
+    }
   }
 
   get questionIcon(): SafeHtml {
