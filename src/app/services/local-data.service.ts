@@ -4,8 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class LocalDataService {
-  constructor() {}
-
   public writeData = (key: string, value: any): void => {
     if (key && value) {
       const data: string = JSON.stringify(value);
