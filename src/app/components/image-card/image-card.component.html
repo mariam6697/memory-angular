@@ -1,3 +1,15 @@
 <div class="image-card-container">
-  <img class="object-cover h-80 w-64 rounded" [src]="gameCardInfo.imageUrl" />
+  <img
+    *ngIf="showImage"
+    class="object-cover h-80 w-64 rounded"
+    [src]="gameCardInfo.imageUrl"
+  />
+
+  <div
+    *ngIf="!showImage"
+    (click)="clickCard()"
+    class="flex bg-purple-300 h-80 w-64 rounded items-center justify-center"
+  >
+    <div [innerHTML]="questionIcon"></div>
+  </div>
 </div>
