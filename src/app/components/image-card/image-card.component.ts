@@ -16,7 +16,7 @@ import { IGameCard } from 'src/app/models/game-card.model';
   templateUrl: './image-card.component.html',
   styleUrls: ['./image-card.component.scss'],
 })
-export class ImageCardComponent implements OnInit, OnChanges {
+export class ImageCardComponent implements OnChanges {
   @Input() gameCardInfo: IGameCard = {} as IGameCard;
   @Input() hideCard: boolean;
   @Input() blockFlipCard: boolean = false;
@@ -26,10 +26,6 @@ export class ImageCardComponent implements OnInit, OnChanges {
   constructor(private readonly sanitizer: DomSanitizer) {
     this.showImage = false;
     this.hideCard = false;
-  }
-
-  ngOnInit(): void {
-    // console.log('gameCardInfo', this.gameCardInfo);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
