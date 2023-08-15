@@ -1,6 +1,6 @@
 # Memory Angular
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mariam6697_memory-angular&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=mariam6697_memory-angulars)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mariam6697_memory-angular&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=mariam6697_memory-angular)
 
 This application is a technical challenge to apply for the Front End Developer position at a certain technological company. The challenge involves creating a web version of the classic game "Memory" or "Concentration".
 
