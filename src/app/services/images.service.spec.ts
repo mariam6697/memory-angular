@@ -19,4 +19,9 @@ describe('ImagesService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should make an http get request for images', () => {
+    service.getImages();
+    expect(spyHttpClient.get).toHaveBeenCalledTimes(1);
+  });
 });
