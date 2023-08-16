@@ -19,6 +19,7 @@
     [ngClass]="{ 'opacity-50 cursor-not-allowed': usernameInput.length < 3 }"
     [disabled]="usernameInput.length < 3"
     (click)="onClick()"
+    aria-label="Guardar nombre de usuario"
   >
     Aceptar
   </button>
