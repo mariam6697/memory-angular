@@ -4,7 +4,7 @@ import { UsernameModalComponent } from './username-modal.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
-describe('ModalComponent', () => {
+describe('UsernameModalComponent', () => {
   let component: UsernameModalComponent;
   let fixture: ComponentFixture<UsernameModalComponent>;
 
@@ -34,5 +34,13 @@ describe('ModalComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should close modal on click', () => {
+    spyOn(component.newUsernameEvent, 'emit');
+    component.usernameInput = 'Juanito';
+    component.onClick();
+    expect(component.newUsernameEvent.emit).toHaveBeenCalled();
+    expect(spyActiveModal.close).toHaveBeenCalled();
   });
 });

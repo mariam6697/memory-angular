@@ -12,7 +12,10 @@ export class UsernameModalComponent {
   constructor(public readonly activeModal: NgbActiveModal) {}
 
   onClick = (): void => {
-    this.newUsernameEvent.emit(this.usernameInput);
-    this.activeModal.close();
+    // Double check on username input
+    if (this.usernameInput.length > 3) {
+      this.newUsernameEvent.emit(this.usernameInput);
+      this.activeModal.close();
+    }
   };
 }
