@@ -81,7 +81,7 @@ export class GameBoardComponent implements OnInit, OnChanges {
     this.checkCardMatch();
   };
 
-  checkCardMatch(): void {
+  checkCardMatch = (): void => {
     if (this.tempAnimals.length == 2) {
       if (this.tempAnimals[0] === this.tempAnimals[1]) {
         // It's a match!
@@ -112,9 +112,9 @@ export class GameBoardComponent implements OnInit, OnChanges {
         }, 2000);
       }
     }
-  }
+  };
 
-  isAnimalSaved(animal: string): boolean {
+  isAnimalSaved = (animal: string): boolean => {
     return this.savedAnimals.includes(animal);
-  }
+  };
 }

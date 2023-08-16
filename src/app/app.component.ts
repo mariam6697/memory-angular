@@ -31,33 +31,31 @@ export class AppComponent implements OnInit {
     this.imagesList = [];
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getImages();
     this.getUsername();
   }
 
-  getImages() {
+  getImages = (): void => {
     this.imagesService.getImages(20).subscribe({
-      next: async (res) => {
-        this.handleImages(res);
-      },
+      next: (res) => this.handleImages(res),
       error: (error) => this.handleError(error),
     });
-  }
+  };
 
-  handleImages(imagesResponse: IImageResponse) {
+  handleImages = (imagesResponse: IImageResponse): void => {
     this.imagesList = imagesResponse.entries;
     this.loadingImages = false;
-  }
+  };
 
-  handleError(error: any) {
+  handleError = (error: any): void => {
     // Handle error
     console.log('Error:', error);
     this.loadingImages = false;
     this.intermittenceError = true;
-  }
+  };
 
-  getUsername() {
+  getUsername = (): void => {
     this.username = this.localDataService.readData('username');
 
     if (!this.username) {
@@ -73,5 +71,5 @@ export class AppComponent implements OnInit {
         }
       );
     }
-  }
+  };
 }

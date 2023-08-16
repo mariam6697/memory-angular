@@ -9,6 +9,7 @@ import ICONS from 'src/app/constants/icons.constants';
 })
 export class LoadingSpinnerComponent {
   constructor(private readonly sanitizer: DomSanitizer) {}
+
   get spinnerSvg(): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(`${ICONS.SPINNER}`);
   }

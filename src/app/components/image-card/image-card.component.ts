@@ -33,12 +33,12 @@ export class ImageCardComponent implements OnChanges {
     }
   }
 
-  clickCard(): void {
+  clickCard = (): void => {
     if (!this.blockFlipCard) {
       this.showImage = !this.showImage;
       this.newFlipEvent.emit(this.gameCardInfo.animal);
     }
-  }
+  };
 
   get questionIcon(): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(`${ICONS.QUESTION}`);

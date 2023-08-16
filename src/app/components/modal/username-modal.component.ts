@@ -11,8 +11,8 @@ export class UsernameModalComponent {
   public usernameInput: string = '';
   constructor(public readonly activeModal: NgbActiveModal) {}
 
-  onClick(): void {
+  onClick = (): void => {
     this.newUsernameEvent.emit(this.usernameInput);
     this.activeModal.close();
-  }
+  };
 }

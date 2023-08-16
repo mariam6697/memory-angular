@@ -1,4 +1,5 @@
 import { Component, TemplateRef } from '@angular/core';
+import { ToastInfo } from 'src/app/models/toast.model';
 import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { ToastService } from 'src/app/services/toast.service';
 export class ToastsComponent {
   constructor(public toastService: ToastService) {}
 
-  isTemplate(toast: any) {
+  isTemplate = (toast: ToastInfo): boolean => {
     return toast.textOrTpl instanceof TemplateRef;
-  }
+  };
 }
